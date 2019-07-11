@@ -1,0 +1,21 @@
+{
+  "name": "fullstagram",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/funetes/fullstagram.git",
+  "author": "Kim Hwan <kimlove2324@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "dev" : "nodemon --exec babel-node src/server.js"
+  },
+  "dependencies": {
+    "graphql-yoga": "^1.18.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "nodemon": "^1.19.1"
+  },
+  "nodemonConfig": {
+    "ext" : "js graphql"
+  }
+}
