@@ -1,0 +1,86 @@
+type User {
+  id: ID!
+  avatar: String
+  username: String!
+  email: String!
+  firstname: String
+  lastname: String
+  fullname: String
+  isFollowing: Boolean!
+  isSelf: Boolean!
+  bio: String
+  followers: [User!]
+  following: [User!]
+  posts: [Post!]!
+  likes: [Like!]!
+  rooms: [Room!]!
+  comments: [Comment!]!
+  loginSecret: String
+  createdAt: String
+  updatedAt: String
+}
+
+type Post {
+  id: ID!
+  location: String
+  caption: String!
+  caplo: String
+  user: User
+  files: [File!]!
+  likes: [Like!]!
+  comments: [Comment!]!
+  isLiked: Boolean!
+  likeCounts: Int!
+  createdAt: String
+  updatedAt: String
+}
+
+type Like {
+  id: ID!
+  user: User!
+  post: Post!
+  createdAt: String
+  updatedAt: String
+}
+
+type Comment {
+  id: ID!
+  user: User!
+  post: Post!
+  text: String!
+  createdAt: String
+  updatedAt: String
+}
+
+type File {
+  id: ID!
+  url: String!
+  post: Post!
+  createdAt: String
+  updatedAt: String
+}
+
+type Room {
+  id: ID!
+  participants: [User!]!
+  messages: [Message!]!
+  createdAt: String
+  updatedAt: String
+}
+
+type Message {
+  id: ID!
+  text: String!
+  from: User!
+  to: User!
+  room: Room!
+  createdAt: String
+  updatedAt: String
+}
+
+type UserProfile {
+  user: User!
+  posts: [Post!]!
+  createdAt: String
+  updatedAt: String
+}

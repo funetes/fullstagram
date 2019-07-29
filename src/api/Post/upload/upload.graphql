@@ -1,0 +1,8 @@
+type Mutation {
+  upload(
+    caption: String!
+    files: [String!]!
+    isLiked: Boolean!
+    location: String!
+  ): Post!
+}

@@ -1,0 +1,65 @@
+type User {
+  id: ID! @id
+  avatar: String
+  username: String! @unique
+  email: String! @unique
+  firstname: String @default(value: "")
+  lastname: String
+  bio: String
+  followers: [User!]!@relation(name: "FollowRelation")
+  following: [User!]!@relation(name: "FollowRelation")
+  posts: [Post!]! @relation(name: "PostsOfUser", onDelete: CASCADE)
+  likes: [Like!]! @relation(name: "LikesOfUser", onDelete: CASCADE)
+  rooms: [Room!]!
+  comments: [Comment!]! @relation(name: "CommentsOfUser", onDelete: CASCADE)
+  loginSecret: String
+}
+
+
+
+type Post {
+  id: ID! @id
+  location: String!
+  caption: String!
+  user: User @relation(name: "PostsOfUser")
+  files: [File!]! @relation(name: "FilesOfPost", onDelete: CASCADE)
+  likes: [Like!]! @relation(name: "LikesOfPost", onDelete: CASCADE)
+  comments: [Comment!]! @relation(name: "CommentsOfPost", onDelete: CASCADE)
+}
+
+
+
+
+
+type Like {
+  id: ID! @id
+  user: User @relation(name: "LikesOfUser")
+  post: Post @relation(name: "LikesOfPost")
+}
+
+type Comment {
+  id: ID! @id
+  user: User @relation(name: "CommentsOfUser")
+  post: Post  @relation(name: "CommentsOfPost")
+  text: String!
+}
+
+type File {
+  id: ID! @id
+  url: String!
+  post: Post @relation(name: "FilesOfPost")
+}
+
+type Room {
+  id: ID! @id
+  participants: [User!]!
+  messages: [Message!]!
+}
+
+type Message {
+  id: ID! @id
+  text: String!
+  from: User!@relation(name:"From")
+  to: User!@relation(name:"To")
+  room: Room!
+}

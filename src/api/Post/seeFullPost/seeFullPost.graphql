@@ -1,0 +1,8 @@
+type FullPost {
+  post: Post!
+}
+
+# id = postid
+type Query {
+  seeFullPost(id: String!): Post!
+}
